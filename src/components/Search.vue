@@ -14,19 +14,30 @@
         :key="filter.name"
         class="form-select"
       >
-        <option v-if="filter.name === 'year'" value="">All Years</option>
-        <option v-for="item in filter.items" :key="item">
+        <option
+          v-if="filter.name === 'year'"
+          value=""
+        >
+          All Years
+        </option>
+        <option
+          v-for="item in filter.items"
+          :key="item"
+        >
           {{ item }}
         </option>
       </select>
     </div>
-    <button class="btn btn-primary" @click="apply">Apply</button>
+    <button
+      class="btn btn-primary"
+      @click="apply"
+    >
+      Apply
+    </button>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {
@@ -59,13 +70,12 @@ export default {
   },
   methods: {
     async apply() {
-      const OMDB_API_KEY = "3a131227";
-      const res = await axios.get(
-        `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${this.title.toLowerCase()}&type=${
-          this.type
-        }&y=${this.year}&page=1`
-      );
-      console.log(res);
+      this.$store.dispatch("movie/searchMovies", {
+        title: this.title,
+        type: this.type,
+        number: this.number,
+        year: this.year
+      });
     },
   },
 };

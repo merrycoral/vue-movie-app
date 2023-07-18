@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="inner">
-      <MovieItem v-for="movie in movies" :key="movie.imdbId" />
+      <MovieItem v-for="movie in movies" :key="movie.imdbId" :movie="movie" />
     </div>
   </div>
 </template>
@@ -13,10 +13,11 @@ export default {
   components: {
     MovieItem,
   },
-  data() {
-    return {
-      movies: [],
-    };
+  computed: {
+    // 반응성을 가져야 하므로 computed
+    movies() {
+      return this.$store.state.movie.movies;
+    },
   },
 };
 </script>
