@@ -45,6 +45,14 @@ export default {
       ],
     };
   },
+  computed: {
+    image() {
+      return this.$store.state.about.image;
+    },
+    name() {
+      return this.$store.state.about.name;
+    },
+  },
   methods: {
     isMatch(path) {
       // if (!path) { return false }
@@ -59,8 +67,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
-
 header {
   height: 70px;
   display: flex;

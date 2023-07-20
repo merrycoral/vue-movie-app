@@ -104,7 +104,6 @@ export default {
       // 정상적인 URL인 경우.
       const src = url.replace("SX300", `SX${size}`);
       this.$loadImage(src).then(() => {
-        alert("들어왔다");
         this.imageLoading = false;
       });
       return src;
@@ -114,7 +113,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
 .container {
   padding-top: 40px;
 }

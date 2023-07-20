@@ -6,20 +6,20 @@
       MOVIE DATABASE
     </h1>
     <p>
-      The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are
-      contributed and maintained by our users.
+      The OMDb API is a RESTful web service to obtain movie information, all
+      content and images on the site are contributed and maintained by our
+      users.
     </p>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
-.container{
+.container {
   padding-top: 40px;
 }
 h1 {
   line-height: 1;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 80px;
 
   span {
