@@ -2,8 +2,9 @@
   <footer>
     <Logo />
     <a
-      href="https://github.com/ParkYoungWoong"
-      target="_blank">
+      href="https://blog.naver.com/nagong_ham"
+      target="_blank"
+    >
       (c){{ new Date().getFullYear() }} {{ name }}
     </a>
   </footer>

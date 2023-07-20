@@ -2,25 +2,32 @@
   <header>
     <Logo />
     <div class="nav nav-pills">
-      <div v-for="nav in navigations" :key="nav.name" class="nav-item">
+      <div
+        v-for="nav in navigations"
+        :key="nav.name"
+        class="nav-item">
         <RouterLink
           :to="nav.href"
           active-class="active"
           :class="{ active: isMatch(nav.path) }"
-          class="nav-link"
-        >
+          class="nav-link">
           {{ nav.name }}
         </RouterLink>
       </div>
     </div>
-    <div class="user" @click="toAbout">
-      <img :src="$store.state.about.image" alt="ha0" />
+    <div
+      class="user"
+      @click="toAbout">
+      <img
+        :src="$store.state.about.image"
+        alt="ha0" />
     </div>
   </header>
 </template>
 
 <script>
 import Logo from "~/components/Logo";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -46,12 +53,13 @@ export default {
     };
   },
   computed: {
-    image() {
-      return this.$store.state.about.image;
-    },
-    name() {
-      return this.$store.state.about.name;
-    },
+    ...mapState('about', [
+      'image', 'name'
+    ]),
+    ...mapState('movie', [
+      'movies', 'loading',
+      'message', 'theMovie'
+    ])
   },
   methods: {
     isMatch(path) {

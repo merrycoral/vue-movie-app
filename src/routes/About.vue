@@ -1,8 +1,12 @@
 <template>
   <div class="about">
     <div class="photo">
-      <Loader v-if="imageLoading" absolute />
-      <img :src="image" :alt="name" />
+      <Loader
+        v-if="imageLoading"
+        absolute />
+      <img
+        :src="image"
+        :alt="name" />
     </div>
 
     <div class="details">
@@ -17,6 +21,7 @@
 </template>
 <script>
 import Loader from "~/components/Loader";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -28,21 +33,13 @@ export default {
     };
   },
   computed: {
-    image() {
-      return this.$store.state.about.image;
-    },
-    name() {
-      return this.$store.state.about.name;
-    },
-    email() {
-      return this.$store.state.about.email;
-    },
-    blog() {
-      return this.$store.state.about.blog;
-    },
-    phone() {
-      return this.$store.state.about.phone;
-    },
+    ...mapState('about', [
+      'name',
+      'email',
+      'blog',
+      'phone',
+      'image'
+    ])
   },
   mounted() {
     this.init();

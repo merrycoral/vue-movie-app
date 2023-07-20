@@ -12,16 +12,26 @@
           <div class="skeleton etc"></div>
         </div>
       </div>
-      <Loader :size="3" :z-index="9" fixed />
+      <Loader
+        :size="3"
+        :z-index="9"
+        fixed
+      />
     </template>
-    <div v-else class="movie-details">
+    <div
+      v-else
+      class="movie-details"
+    >
       <div
         :style="{
           backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})`,
         }"
         class="poster"
       >
-        <Loader v-if="imageLoading" absolute />
+        <Loader
+          v-if="imageLoading"
+          absolute
+        />
       </div>
       <div class="specs">
         <div class="title">
@@ -74,7 +84,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import Loader from "~/components/Loader";
 
 export default {
@@ -90,11 +100,16 @@ export default {
     ...mapState("movie", ["loading", "theMovie"]),
   },
   created() {
-    this.$store.dispatch("movie/searchMovieWithId", {
-      id: this.$route.params.id,
+    //this.$store.dispatch("movie/searchMovieWithId", { 
+      //mapActions를 사용하지 않았을 경우
+      this.searchMovieWithId({
+        id: this.$route.params.id,
     });
   },
   methods: {
+    ...mapActions('movie', ['searchMovieWithId'
+    ]),
+    //actions도 
     requestDiffSizeImage(url, size = 700) {
       // 잘못된 URL(Poster)인 경우.
       if (!url || url === "N/A") {
