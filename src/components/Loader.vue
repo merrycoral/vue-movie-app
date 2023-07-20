@@ -1,15 +1,17 @@
 <template>
-  <div 
-    :style="{ 
-      width: `${size}rem`, 
+  <div
+    :style="{
+      width: `${size}rem`,
       height: `${size}rem`,
-      zIndex
+      zIndex,
     }"
     :class="{
       absolute,
-      fixed
+      fixed,
     }"
-    class="spinner-border text-primary"></div>
+    class="spinner-border text-primary"
+    role="status"
+  ></div>
 </template>
 
 <script>
@@ -17,25 +19,26 @@ export default {
   props: {
     size: {
       type: Number,
-      default: 2
+      default: 2,
     },
     absolute: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fixed: {
       type: Boolean,
-      default: false
+      default: false,
     },
     zIndex: {
       type: Number,
-      default: 0
-    }
-  }
-}
+      default: 0,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+@import "~/scss/main";
 .spinner-border {
   margin: auto;
   top: 0;

@@ -97,7 +97,17 @@ export default {
   methods: {
     requestDiffSizeImage(url, size = 700) {
       // 잘못된 URL(Poster)인 경우.
-      return url.replace("SX300", `SX${size}`);
+      if (!url || url === "N/A") {
+        this.imageLoading = false;
+        return "";
+      }
+      // 정상적인 URL인 경우.
+      const src = url.replace("SX300", `SX${size}`);
+      this.$loadImage(src).then(() => {
+        alert("들어왔다");
+        this.imageLoading = false;
+      });
+      return src;
     },
   },
 };
@@ -115,6 +125,7 @@ export default {
     width: 500px;
     height: 500px * 3/2;
     margin-right: 70px;
+    position: relative;
   }
   .specs {
     flex-grow: 1;

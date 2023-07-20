@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="user" @click="toAbout">
-      <img :src="$store.state.about.image" alt="HEROPY" />
+      <img :src="$store.state.about.image" alt="ha0" />
     </div>
   </header>
 </template>
@@ -36,7 +36,7 @@ export default {
         {
           name: "Movie",
           href: "/movie/tt4520988",
-          path: /^\/movie/,
+          path: /^\/movie/, // '/movie'
         },
         {
           name: "About",
