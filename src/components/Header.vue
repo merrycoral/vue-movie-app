@@ -5,52 +5,56 @@
       <div
         v-for="nav in navigations"
         :key="nav.name"
-        class="nav-item">
+        class="nav-item"
+      >
         <RouterLink
           :to="nav.href"
           active-class="active"
           :class="{ active: isMatch(nav.path) }"
-          class="nav-link">
+          class="nav-link"
+        >
           {{ nav.name }}
         </RouterLink>
       </div>
     </div>
     <div
       class="user"
-      @click="toAbout">
+      @click="toAbout"
+    >
       <img
         :src="$store.state.about.image"
-        alt="ha0" />
+        alt="ha0"
+      />
     </div>
   </header>
 </template>
 
 <script>
-import Logo from "~/components/Logo";
-import { mapState } from "vuex";
+import Logo from '~/components/Logo'
+import { mapState } from "vuex"
 
 export default {
   components: {
-    Logo,
+    Logo
   },
   data() {
     return {
       navigations: [
         {
-          name: "Search",
-          href: "/",
+          name: 'Search',
+          href: '/'
         },
         {
-          name: "Movie",
-          href: "/movie/tt4520988",
-          path: /^\/movie/, // '/movie'
+          name: 'Movie',
+          href: '/movie/tt4520988',
+          path: /^\/movie/
         },
         {
-          name: "About",
-          href: "/about",
-        },
-      ],
-    };
+          name: 'About',
+          href: '/about'
+        }
+      ]
+    }
   },
   computed: {
     ...mapState('about', [
@@ -65,13 +69,13 @@ export default {
     isMatch(path) {
       // if (!path) { return false }
       // Optional chaining
-      return path?.test(this.$route.fullPath);
+      return path?.test(this.$route.fullPath)
     },
     toAbout() {
-      this.$router.push("/about");
-    },
-  },
-};
+      this.$router.push('/about')
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -97,7 +101,7 @@ header {
     bottom: 0;
     right: 40px;
     margin: auto;
-    transition: 0.4s;
+    transition: .4s;
     &:hover {
       background-color: darken($gray-200, 10%);
     }
